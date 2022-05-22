@@ -36,6 +36,30 @@ de esta forma se instalarán las dependencias que la api requiere para su funcio
 
 - imgs : son las imagenes de nuestra aplicacion en funcionamiento
 
+
+despliege en aws
+
+- nos dirigimos a apartado de maquinas virtuales EC2
+- le damos clic en Lanzar una instancia
+- - establecemos el nombre o etiqueta
+- - sele cionamos Imágenes de aplicaciones y sistemas operativos
+- - luego el tipo de instancia
+- - Configuraciones de red le damos editar y adicionamos un grupo de seguirad que seria el trafico que red que queremos para esta prueba se seleciono todo el trafico y origen cualquier lugar
+- - para finalizar le damos click en lanzar instancia se lanzara una modal para crear par de llave la cual al generar se descargaran archivo de extencion .pem
+
+- para contiuar necesitaresmos de putty y puttygen
+- - abrimos puttygen y cargamos nuestro archivo .pem para crear la clave privad de conexion, le damos en guardar y generara otro archivo .ppk
+- - abrimos putty y le damos en SSH luego en AUTH donde dice private key file for authentication: cargamos el archivo anterior mente generado con puttygen
+    -- luego damos clic en session y en el campo ip address ingresamos la direcion ip de nuestra maquina EC2 y luego click en open
+- - nos va a pedir ingresar nuestro usuario `ec2-user`
+- - una ves conectados a nuestra maquina verificamos sino hay actualizaciones con `sudo yum update` en el caso de que sea requerido procedemos a actualizar los paquetes
+- - instalaresmos docker para nuestra aplicacion para eso debemos ejecutar
+    `sudo amazon-linux-extras install docker` tambien es necesario instalar git `sudo yum install git`
+- - una ves instalado las utilidades del paso anterior procedemos a clonar nuestro respositorio
+- - paso a segir es darle permisos a docker para eso ejecutamos el siguiente comando
+    `sudo usermod -a -G docker ec2-user` una ves ejecuta el comando cerramos la conexion con putty y volvemos a abrirla
+
+
 ## recursos gráficos
 
 web inicial
