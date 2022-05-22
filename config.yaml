@@ -1,3 +1,3 @@
 config:
   blob: "blobFiles"
-  filesnames: ["ejercicio1_b1.xlsx", "ejercicio1_b12.txt"]
+  filesnames: ["ejercicio1_b1.xlsx", "ejercicio1_b2.txt"]

@@ -4,6 +4,8 @@ from flask import Blueprint, jsonify, request, make_response
 from app.utils.loadfiles import LoadFiles
 import os
 from app.models.response import response
+import json
+
 loadfile = LoadFiles()
 serviceFile = Blueprint("serviceFile", __name__)
 
@@ -12,27 +14,34 @@ servicename = '/storage'
 
 @serviceFile.route('/')
 def index():
-    loadfile.getTxt()
-    return "hi"
+    config = getconfig('config')
+    datatable = loadfile.getData(config=config)
+    result = datatable.to_json(orient="records")
+    parsed = json.loads(result)
+    res = response(data=json.dumps(parsed, indent=4))
+    return make_response(
+        jsonify(res),
+        res['status']
+    )
 
 
 @serviceFile.route('/location')
 def method_name():
     erros = {}
-    dirFiles = getconfig('config', 'blob')
-    filesList = getconfig('config', 'filesnames')
+    dir_blob = getconfig('config', 'blob')
+    files = getconfig('config', 'filesnames')
 
-    if dirFiles is None or dirFiles is Empty:
+    if dir_blob is None or dir_blob is Empty:
         erros["dir"] = "file directory does not exist"
 
-    if filesList is None or filesList is Empty:
+    if files is None or files is Empty:
         erros["dir"] = "error loading files"
 
     if not erros:
         dirFiles = dirFiles + '/'
         data = {
-            'xlsm': dirFiles + filesList[0],
-            'txt': dirFiles + filesList[1]
+            'xlsm': dirFiles + files[0],
+            'txt': dirFiles + files[1]
         }
 
         res = response(data=data)
@@ -48,8 +57,10 @@ def method_name():
     )
 
 
-def getconfig(key, property):
+def getconfig(key, property=None):
     yamlfile = os.path.abspath('config.yaml')
     data = loadfile.getYaml(yamlfile)
     element = data.get(key)
+    if property is None:
+        return element
     return element.get(property)
