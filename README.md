@@ -36,7 +36,13 @@ de esta forma se instalarán las dependencias que la api requiere para su funcio
 
 - imgs : son las imagenes de nuestra aplicacion en funcionamiento
 
-despliege en aws
+## rutas api
+
+- ip/v1/storage
+- ip/v1/storage/chart
+- ip/v1/storage/location
+
+## despliege en aws
 
 - nos dirigimos a apartado de maquinas virtuales EC2
 - le damos clic en Lanzar una instancia
@@ -57,6 +63,8 @@ despliege en aws
 - - una ves instalado las utilidades del paso anterior procedemos a clonar nuestro respositorio
 - - paso a segir es darle permisos a docker para eso ejecutamos el siguiente comando
     `sudo usermod -a -G docker ec2-user` una ves ejecuta el comando cerramos la conexion con putty y volvemos a abrirla
+- - nueva mente conectados a nuestro servidor vamos a contruir nuestra imagen ejecutamos el comando `docker build -t flask_docker:v1 .`
+- - cuando paso anterior halla terminado bindearemos nuestra ip para darle salida a nuestra aplicacion ejecutamos el siguiente comandoa `docker run -d -p 80:5000 flask_docker:v1` esto dejara la ejecucion en segundo plano
 
 ## recursos gráficos
 
