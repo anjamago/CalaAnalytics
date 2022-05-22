@@ -36,6 +36,7 @@ de esta forma se instalarán las dependencias que la api requiere para su funcio
 
 - imgs : son las imagenes de nuestra aplicacion en funcionamiento
 
+
 despliege en aws
 
 - nos dirigimos a apartado de maquinas virtuales EC2
@@ -57,6 +58,7 @@ despliege en aws
 - - una ves instalado las utilidades del paso anterior procedemos a clonar nuestro respositorio
 - - paso a segir es darle permisos a docker para eso ejecutamos el siguiente comando
     `sudo usermod -a -G docker ec2-user` una ves ejecuta el comando cerramos la conexion con putty y volvemos a abrirla
+
 
 ## recursos gráficos
 
