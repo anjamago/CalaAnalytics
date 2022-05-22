@@ -8,10 +8,10 @@ app.register_blueprint(serviceFile, url_prefix=versionApi+servicename)
 CORS(app)
 
 
-@app.route('/', methods=['GET'])
-def index():
+@app.route('/')
+def get():
     return jsonify({
-        'message': "hola mundo"
+        'message': "Ruta v1/storage"
     })
 
 
