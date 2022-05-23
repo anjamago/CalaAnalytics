@@ -77,7 +77,7 @@ $(() => {
       },
       options: {
         indexAxis: "y",
-
+        maintainAspectRatio: false,
         elements: {
           bar: {
             borderWidth: 2,

@@ -89,3 +89,5 @@ web inicial
   ![alt text](./imgs/g1.PNG)
 - agrupando columnas y aplicando filtros
   ![alt text](./imgs/g2.PNG)
+- grafica
+  ![alt text](./imgs/analitic.PNG)

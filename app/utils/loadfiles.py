@@ -18,8 +18,8 @@ class LoadFiles(metaclass=SingletonMeta):
         table = self.LoadFileExcel(blob, files, self.loadFileTxt(blob, files))
 
         dataFrame = pd.DataFrame({
-            "Nombre": table['NOMBRE'],
-            "Apellido": table['APELLIDO'],
+            "Nombre": table['NOMBRE'].str.upper(),
+            "Apellido": table['APELLIDO'].str.upper(),
             "Cedula": table['CEDULA'],
             "Nacimiento": table['NACIMIENTO'],
             "Nombre Completo": "",
@@ -29,7 +29,7 @@ class LoadFiles(metaclass=SingletonMeta):
         })
         dataFrame = dataFrame.drop_duplicates(['Cedula', 'Tipo de pedido'])
         dataFrame['Nombre Completo'] = dataFrame[[
-            'Nombre', 'Apellido']].apply(' '.join, axis=1)
+            'Nombre', 'Apellido']].apply(' '.join, axis=1).str.title()
         return dataFrame
 
     def LoadFileExcel(self, blob, files, bufferTxt):
