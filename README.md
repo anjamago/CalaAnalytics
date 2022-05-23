@@ -36,6 +36,7 @@ de esta forma se instalarán las dependencias que la api requiere para su funcio
 
 - imgs : son las imagenes de nuestra aplicacion en funcionamiento
 
+
 ## rutas api
 
 - ip/v1/storage
@@ -45,9 +46,11 @@ de esta forma se instalarán las dependencias que la api requiere para su funcio
 
 ## despliegue en aws
 
+
 - nos dirigimos a apartado de maquinas virtuales EC2
 - le damos clic en Lanzar una instancia
 - - establecemos el nombre o etiqueta
+
 - - seleccionamos Imágenes de aplicaciones y sistemas operativos
 - - luego el tipo de instancia
 - - Configuraciones de red le damos editar y adicionamos un grupo de seguridad que sería el tráfico que red que queremos para esta prueba se seleccionó todo el tráfico y origen cualquier lugar
@@ -66,6 +69,7 @@ de esta forma se instalarán las dependencias que la api requiere para su funcio
     `sudo usermod -a -G docker ec2-user` una ves ejecuta el comando cerramos la conexión con putty y volvemos a abrirla
 - - nueva mente conectados a nuestro servidor vamos a construir nuestra imagen ejecutamos el comando `docker build -t flask_docker:v1 .`
 - - cuando paso anterior haya terminado bindearemos nuestra ip para darle salida a nuestra aplicación ejecutamos el siguiente comando `docker run -d -p 80:5000 flask_docker:v1` esto dejara la ejecución en segundo plano
+
 
 ## recursos gráficos
 
